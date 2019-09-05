@@ -6,8 +6,8 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 // import routes
-const user = require("./routes/user");
-
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/user");
 // Init app
 const app = express();
 
@@ -25,7 +25,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // add routes
-app.use("/api", user);
+app.use("/api", authRoutes);
+app.use("/api", userRoutes)
 
 const port = process.env.PORT || 3000;
 
